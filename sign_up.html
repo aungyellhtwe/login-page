@@ -1,0 +1,182 @@
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+         *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#cf6f6f, #9198e5);
+    background-size: cover;
+    background-position: center;
+}
+#h1{
+    font-size: 2em;
+    font-weight: bold;
+}
+form{
+    width:420px;
+    background: rgba(255 255 255 / 20%);
+    text-align: center;
+    border: 2px solid rgba(255 255 255 / 10%);
+    border-radius: 12px;
+    padding: 30px 40px;
+    color: rgb(92, 79, 105);
+}
+form h1{
+    font-size: 36px;
+}
+form .input{
+    padding: 5px 5px;
+    border-radius: 15px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 280px;
+    height: 40px;
+    background: rgba(124, 168, 212, 20%);
+    font-size: 15px;
+}
+form .input:hover{
+    font-size: large;
+    width: 290px;
+    height: 42px;
+    outline: 1px solid white;
+}
+.input::placeholder{
+    color: rgb(42, 25, 126);
+}
+#remember{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    font-size: 15px;
+}
+#forgot{
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(92, 79, 105);
+}
+#login{
+    width: 280px;
+    height: 40px;
+    border-radius: 15px;
+    background:rgba(82, 60, 143, 0.516) ;
+    border: 1px white;
+    font-size: 20px;
+    color: rgb(232, 232, 232);
+    font-weight: bold;
+    cursor: pointer;
+}
+#login:hover{
+    background-color:  rgba(82, 60, 143, 70%);
+    font-size: 22px;
+}
+.bottom{
+    margin-top: 15px;
+    font-size: 15px;
+}
+.bottomclick:hover{
+    font-size: 17px;
+}
+.bottomclick{
+    border:none;
+    background-color: transparent;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(68, 25, 111);
+}
+#username{
+    background: url(person.png) no-repeat left;
+    padding-left: 30px;
+    background-size: 20px;
+    background-color: rgba(124, 168, 212, 20%);
+}
+#password{
+    background: url(lock.png) no-repeat left;
+    padding-left: 30px;
+    background-size: 20px;
+    background-color: rgba(124, 168, 212, 20%);
+}
+#email{
+    background: url(mail.png) no-repeat left;
+    padding-left: 30px;
+    background-size: 20px;
+    background-color: rgba(124, 168, 212, 20%);
+}
+#alert{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(185, 16, 16);
+}
+#link{
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+    <div id="signupform">
+        <form name="frm" method="post" action="" onsubmit="return validate(this);">
+            <label id="h1" for="username">Sign Up</label><br>
+            <input id="email" name="email" class="input" type="text" placeholder="Enter Your Email"/><br>
+            <input id="username" name="username" class="input" type="text"  placeholder="Enter your username"/><br>
+            <input id="password" name="password" class="input" type="password"  placeholder="Create a password"/>
+            <input id="password1" name="password1" class="input" type="password"  placeholder="Retype your password"/>
+            <br><br>
+            <button id="login" type="submit" >Sign Up</button>
+            <br>
+            <div id="correct"></div>
+            <div class="bottom">Already have an account? <button class="bottomclick" id="loginclick">
+                <a id="link" href="sign_in.html">Login</a></button></div>
+            <div id="alert"></div>
+        </form>
+        </div>
+        <script>
+            function validate(form){
+            let mail = document.getElementById("email").value;
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let compassword = document.getElementById("password1").value;
+            let alert = document.getElementById("alert");
+            var chEmail = /^\w(\.?[\w-])*@\w(\.?[\w-])*\.[a-z]{2,6}(\.[a-z]{2})?$/i; 
+    
+            if(username==="" || password==="" || email==="" || compassword==="" ){
+                alert.textContent = "!You must enter the form completely";
+                document.frm.email.focus();
+                return false;
+            }
+            if(!chEmail.test(mail)){
+                alert.textContent = "You must enter a valid email address";
+                document.frm.mail.focus();
+                return false;
+            }
+            if(username.length < 3){
+                alert.textContent = "!Your username must length more than 3 !";
+                document.frm.username.focus();
+                return false;
+            }
+            if(password.length <8){
+                alert.textContent = "!Your password must lenght more than 8!";
+                document.frm.password.focus();
+                return false;
+            }
+            if(compassword != password){
+                alert.textContent = "!Your Comfirm Password doesn't match!";
+                document.frm.password1.focus();
+                return false;
+            }
+            return true;
+        }
+ </script>
+</body>
+</html>
